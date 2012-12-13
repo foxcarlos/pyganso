@@ -13,7 +13,15 @@ import MplayerCtrl as mpc
 from threading import Thread
 import socket
 import os
+from rutinas.varias import *
 
+
+'''
+Obtener la Informacion del Archivo de Configuracion
+'''
+ruta_arch_conf = os.path.dirname(sys.argv[0])
+archivo_configuracion = os.path.join(ruta_arch_conf, 'pyganzo.conf')
+fc = FileConfig(archivo_configuracion)
 
 EVT_RESULT_ID = wx.NewId()
 
@@ -35,12 +43,12 @@ class TestThread(Thread):
     def __init__(self, wxObject):
         """Init Contructor de la clase Thread Class."""
         Thread.__init__(self)
-        self.wxObject = wxObject
+        self.wxObject = wxObject        
         # Se prepara el servidor
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.bind(("", 8000))
         self.server.listen(1)
-        self.start()    # start the thread
+        self.start()    # Inicia el Hilo
         
 
     def run(self):
@@ -50,27 +58,30 @@ class TestThread(Thread):
         #server.bind(("", 8000))
         #server.listen(1)
         # bucle para atender clientes
+        
         self.terminar = False
         while not self.terminar:
             print "Esperando clientes..."
             socket_cliente, datos_cliente = self.server.accept()
             print "conectado cliente:" + str(datos_cliente)
             self.seguir = True
-            while self.seguir:               
+            while self.seguir:                
                 self.peticion = socket_cliente.recv(1000)
+
+                
+                if self.peticion.strip() == 'adios':
+                    print('Me Solicitaron Cerrar, Adios')
+                    self.terminar = True
+                    self.seguir = False
+                    self.server.close()
+                    break
+ 
                 if self.peticion:
                     print(self.peticion)
                     socket_cliente.send('Fue')   
                     wx.PostEvent(self.wxObject, ResultEvent(self.peticion))
                     self.seguir = False
                     time.sleep(3)
-
-                if self.peticion.strip() == 'adios':
-                    self.terminar = True
-                    self.seguir = False
-                    self.server.close()
-                    break
-                
 
 # end wxGlade
 
@@ -92,9 +103,10 @@ class MiFrame(wx.Frame):
         self.label_2 = wx.StaticText(self, -1, "Turno Actual", style=wx.TE_CENTRE)
         self.text_ctrl_turno = wx.TextCtrl(self, -1, "", style=wx.TE_MULTILINE | wx.TE_CENTRE | wx.TE_READONLY)
         self.text_ctrl_especialidad = wx.TextCtrl(self, -1, "", style=wx.TE_MULTILINE | wx.TE_READONLY)
+        #self.mpc = mpc.MplayerCtrl(self, -1, u'mplayer', media_file=u'/home/cgarcia/Videos/HCOROMOTO/VTS_01_1.VOB')             
+        self.mpc = mpc.MplayerCtrl(self, -1, u'mplayer')
+        self.Bind(mpc.EVT_PROCESS_STARTED, self.iniciar_reproduccion)
         
-        self.mpc = mpc.MplayerCtrl(self, -1, u'mplayer', media_file=u'/home/cgarcia/Videos/HCOROMOTO/VTS_01_1.VOB')     
-    
         TestThread(self)
         self.__set_properties()
         self.__do_layout()
@@ -103,14 +115,18 @@ class MiFrame(wx.Frame):
         # Set up event handler for any worker thread results
         EVT_RESULT(self, self.updateDisplay)
 
+    def iniciar_reproduccion(self, evt):
+        lista = fc.opcion_consultar('LISTA_REPRODUCCION')[0][1]
+        self.mpc.Loadlist(lista)
+
     def cerrar_form(self, event):
         self.cliente()
         self.Destroy()
 
     def cliente(self):
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        server.connect(('10.121.3.41', 8000))
-        server.send('adios')
+        server.connect(('127.0.0.1', 8000))
+        server.send('adios')    
 
     def updateDisplay(self, msg):
         """
@@ -122,6 +138,9 @@ class MiFrame(wx.Frame):
         mixer.music.load("campana.mp3")
         mixer.music.play() 
         t = msg.data
+        if t.strip() == 'adios':
+            self.cerrar_form(self)
+            
         lcPaciente, lcEspecialidad = t.split('^')
         lcPacienteDecode = lcPaciente.decode('latin-1')
         
