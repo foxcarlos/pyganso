@@ -120,6 +120,7 @@ class MiFrame(wx.Frame):
         self.mpc.Loadlist(lista)
 
     def cerrar_form(self, event):
+        self.mpc.Quit()
         self.cliente()
         self.Destroy()
 
@@ -138,33 +139,33 @@ class MiFrame(wx.Frame):
         mixer.music.load("campana.mp3")
         mixer.music.play() 
         t = msg.data
+        
         if t.strip() == 'adios':
             self.cerrar_form(self)
+        
+        if '^' in t:
+            lcPaciente, lcEspecialidad = t.split('^')
+            lcPacienteDecode = lcPaciente.decode('latin-1')
             
-        lcPaciente, lcEspecialidad = t.split('^')
-        lcPacienteDecode = lcPaciente.decode('latin-1')
-        
-        #Llama al paciente con Voz
-        comando_de_voz = "espeak -s140 -v 'es-la'+f2 '%s'" % (lcPacienteDecode)
-        os.system(comando_de_voz)
-        
-        ultimo = lcPacienteDecode + '-' + lcEspecialidad
-        if len(ultimo) >0:
-            self.list_ctrl_llamados.InsertStringItem(self.pos, ultimo)
-
-        self.pos = 0
-        self.text_ctrl_turno.Value = lcPacienteDecode.strip()
-        self.text_ctrl_especialidad.Value = lcEspecialidad.strip()
-        time.sleep(1)
-        self.mpc.Pause()
-        #mixer.quit()
+            #Llama al paciente con Voz
+            comando_de_voz = "espeak -s140 -v 'es-la'+f2 '%s'" % (lcPacienteDecode)
+            os.system(comando_de_voz)           
+            ultimo = lcPacienteDecode + '-' + lcEspecialidad
+            
+            if len(ultimo) >0:
+                self.list_ctrl_llamados.InsertStringItem(self.pos, ultimo)               
+                self.pos = 0
+                self.text_ctrl_turno.Value = lcPacienteDecode.strip()
+                self.text_ctrl_especialidad.Value = lcEspecialidad.strip()
+                time.sleep(1)
+                self.mpc.Pause()
        
-        '''
-        if isinstance(t, int):
-            self.text_ctrl_turno.Value = lcPaciente
-        else:
-            self.text_ctrl_turno.Value = lcPaciente
-        '''
+            '''
+            if isinstance(t, int):
+                self.text_ctrl_turno.Value = lcPaciente
+            else:
+                self.text_ctrl_turno.Value = lcPaciente
+            '''
 
     def __set_properties(self):
         # begin wxGlade: MiFrame.__set_properties
