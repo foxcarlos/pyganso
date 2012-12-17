@@ -67,7 +67,6 @@ class TestThread(Thread):
             self.seguir = True
             while self.seguir:                
                 self.peticion = socket_cliente.recv(1000)
-
                 
                 if self.peticion.strip() == 'adios':
                     print('Me Solicitaron Cerrar, Adios')
@@ -105,6 +104,7 @@ class MiFrame(wx.Frame):
         self.text_ctrl_especialidad = wx.TextCtrl(self, -1, "", style=wx.TE_MULTILINE | wx.TE_READONLY)
         #self.mpc = mpc.MplayerCtrl(self, -1, u'mplayer', media_file=u'/home/cgarcia/Videos/HCOROMOTO/VTS_01_1.VOB')             
         self.mpc = mpc.MplayerCtrl(self, -1, u'mplayer')
+        self.mpc.SetProperty('volume', 100)
         self.Bind(mpc.EVT_PROCESS_STARTED, self.iniciar_reproduccion)
         
         TestThread(self)
