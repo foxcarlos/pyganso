@@ -104,7 +104,6 @@ class MiFrame(wx.Frame):
         self.text_ctrl_especialidad = wx.TextCtrl(self, -1, "", style=wx.TE_MULTILINE | wx.TE_READONLY)
         #self.mpc = mpc.MplayerCtrl(self, -1, u'mplayer', media_file=u'/home/cgarcia/Videos/HCOROMOTO/VTS_01_1.VOB')             
         self.mpc = mpc.MplayerCtrl(self, -1, u'mplayer')
-        self.mpc.SetProperty('volume', 100)
         self.Bind(mpc.EVT_PROCESS_STARTED, self.iniciar_reproduccion)
         
         TestThread(self)
@@ -118,6 +117,7 @@ class MiFrame(wx.Frame):
     def iniciar_reproduccion(self, evt):
         lista = fc.opcion_consultar('LISTA_REPRODUCCION')[0][1]
         self.mpc.Loadlist(lista)
+        self.mpc.SetProperty('volume', 100)
 
     def cerrar_form(self, event):
         self.mpc.Quit()
