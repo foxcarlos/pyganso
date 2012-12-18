@@ -95,14 +95,13 @@ class MiFrame(wx.Frame):
         self.label_cabecera = wx.StaticText(self, -1, "HOSPITAL COROMOTO")
         
         self.list_ctrl_llamados = wx.ListCtrl(self, -1, style=wx.LC_REPORT | wx.SUNKEN_BORDER | wx.LC_HRULES)
-        self.list_ctrl_llamados.InsertColumn(0, 'ULTIMOS LLAMADOS A CITA', width=1000)
+        self.list_ctrl_llamados.InsertColumn(0, 'ULTIMOS LLAMADOS A CITA', width=800)
 
         self.pos = 0
 
         self.label_2 = wx.StaticText(self, -1, "Turno Actual", style=wx.TE_CENTRE)
         self.text_ctrl_turno = wx.TextCtrl(self, -1, "", style=wx.TE_MULTILINE | wx.TE_CENTRE | wx.TE_READONLY)
-        self.text_ctrl_especialidad = wx.TextCtrl(self, -1, "", style=wx.TE_MULTILINE | wx.TE_READONLY)
-        #self.mpc = mpc.MplayerCtrl(self, -1, u'mplayer', media_file=u'/home/cgarcia/Videos/HCOROMOTO/VTS_01_1.VOB')             
+        self.text_ctrl_especialidad = wx.TextCtrl(self, -1, "", style=wx.TE_MULTILINE | wx.TE_READONLY)           
         self.mpc = mpc.MplayerCtrl(self, -1, u'mplayer')
         self.Bind(mpc.EVT_PROCESS_STARTED, self.iniciar_reproduccion)
         
@@ -149,11 +148,11 @@ class MiFrame(wx.Frame):
             
             #Llama al paciente con Voz
             comando_de_voz = "espeak -s140 -v 'es-la'+f2 '%s'" % (lcPacienteDecode)
-            os.system(comando_de_voz)           
+            os.system(comando_de_voz)
             ultimo = lcPacienteDecode + '-' + lcEspecialidad
             
             if len(ultimo) >0:
-                self.list_ctrl_llamados.InsertStringItem(self.pos, ultimo)               
+                self.list_ctrl_llamados.InsertStringItem(self.pos, ultimo)
                 self.pos = 0
                 self.text_ctrl_turno.Value = lcPacienteDecode.strip()
                 self.text_ctrl_especialidad.Value = lcEspecialidad.strip()
@@ -169,16 +168,18 @@ class MiFrame(wx.Frame):
 
     def __set_properties(self):
         # begin wxGlade: MiFrame.__set_properties
-        self.SetTitle("Hospital Coromoto")
+        nombrepc = '[%s]' % (socket.gethostname())
+        self.SetTitle("Hospital Coromoto " + nombrepc)
         self.SetBackgroundColour(wx.Colour(165, 42, 42))
 
         self.label_cabecera.SetBackgroundColour(wx.Colour(165, 42, 42))
         self.label_cabecera.SetForegroundColour(wx.Colour(255, 255, 255))
         self.label_cabecera.SetFont(wx.Font(50, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
 
-        self.list_ctrl_llamados.SetMinSize((1000, 232))
-        self.list_ctrl_llamados.SetFont(wx.Font(30, wx.MODERN, wx.NORMAL, wx.NORMAL, 0, "URW Gothic L"))
+        self.list_ctrl_llamados.SetMinSize((800, 232))
+        self.list_ctrl_llamados.SetFont(wx.Font(30, wx.MODERN, wx.NORMAL, wx.BOLD, 0, "URW Gothic L"))
         self.list_ctrl_llamados.SetForegroundColour(wx.Colour(165, 42, 42))
+        self.list_ctrl_llamados.SetBackgroundColour(wx.Colour(255, 255, 255))
 
         self.label_2.SetBackgroundColour(wx.Colour(165, 42, 42))
         self.label_2.SetForegroundColour(wx.Colour(255, 255, 255))
