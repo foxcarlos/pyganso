@@ -116,7 +116,7 @@ class MiFrame(wx.Frame):
     def iniciar_reproduccion(self, evt):
         lista = fc.opcion_consultar('LISTA_REPRODUCCION')[0][1]
         self.mpc.Loadlist(lista)
-        self.mpc.SetProperty('volume', 100)
+        self.mpc.SetProperty('volume', 0)
 
     def cerrar_form(self, event):
         self.mpc.Quit()
@@ -147,9 +147,10 @@ class MiFrame(wx.Frame):
             lcPacienteDecode = lcPaciente.decode('latin-1')
             
             #Llama al paciente con Voz
-            comando_de_voz = "espeak -s140 -v 'es-la'+f2 '%s'" % (lcPacienteDecode)
-            os.system(comando_de_voz)
-            ultimo = lcPacienteDecode + '-' + lcEspecialidad
+            #comando_de_voz = "espeak -s140 -v 'es-la'+f2 '%s'" % (lcPacienteDecode)
+            #os.system(comando_de_voz)
+            
+	    ultimo = lcPacienteDecode + '-' + lcEspecialidad
             
             if len(ultimo) >0:
                 self.list_ctrl_llamados.InsertStringItem(self.pos, ultimo)
