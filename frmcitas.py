@@ -159,6 +159,7 @@ class MiFrame(wx.Frame):
                 self.text_ctrl_especialidad.Value = lcEspecialidad.strip()
                 time.sleep(1)
                 self.mpc.Pause()
+                self.mpc.SetProperty('volume', 0)
        
             '''
             if isinstance(t, int):
