@@ -20,7 +20,7 @@ from rutinas.varias import *
 Obtener la Informacion del Archivo de Configuracion
 '''
 ruta_arch_conf = os.path.dirname(sys.argv[0])
-archivo_configuracion = os.path.join(ruta_arch_conf, 'pyganzo.conf')
+archivo_configuracion = os.path.join(ruta_arch_conf, 'pyganso.conf')
 fc = FileConfig(archivo_configuracion)
 
 EVT_RESULT_ID = wx.NewId()
