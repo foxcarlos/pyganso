@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+<table align="center">
+<tr>
+<td>
+<FORM action="/seleccionar" method="post">
+	<table>
+	<tr>
+	<td colspan=2 align="left"> Contactos</td>
+	</tr>
+	<tr>
+	<td colspan=2 align="left">
+   <SELECT multiple size="8" name="elegir-contactos">		
+		%for fila in comboBoxContactos:
+		<OPTION>{{fila}}</OPTION>
+		%end
+   </SELECT>
+   </td>
+   </tr>
+   </table>
+</td>
+<td>
+	<table>
+	<tr>
+	<td colspan=2 align="left"> Listas</td>
+	</tr>
+	<tr>
+	<td colspan=2 align="left">
+   <SELECT multiple size="8" name="elegir-listas">
+		%for fila in comboBoxListas:
+		<OPTION>{{fila}}</OPTION>
+		%end
+   </SELECT>
+   </td>
+   </tr>
+   </table>
+</td>
+</tr>
+<tr>	   
+<td align="left"><INPUT type="submit" value="Aceptar">
+<INPUT type="reset" value="Limpiar"></td>
+</tr>
+</FORM>
+<tr>
+<td colspan=2 align="justify">
+<FORM action="/smsenviar" method="post">
+	Contactos<br>   
+   <input type="text" name="telefono" size="100" maxlength="100" value="{{get('text1', '')}}"><br>
+	Listas<br>   
+   <input type="text" name="listas" size="100" maxlength="100" value="{{get('text2', '')}}"><br>
+	Mensaje<br>	
+	<textarea name="mensaje" cols=36></textarea><br>
+	<INPUT type="submit" value="Enviar">
+</FORM>
+</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,73 @@
+db.usuarios.insert({'usuario': 'foxcarlos', 'clave': 'carlosgarcia', 'nombres':'Carlos Alberto', 'telefono': '04263002966', 'email': 'foxcarlos@gmail.com'})
+db.usuarios.insert({'usuario': 'invitado', 'clave': 'invitado', 'nombres':'Usuario Invitado', 'telefono': '04263002966', 'email': 'invitado@gmail.com'})
+
+CONTACTOS:
+db.contactos.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre" : "Gregory","apellido" : "Aular","telefonos" : "04125479706","email" : "gaular@gmail.com","twitter" : "","listas_id" : [ObjectId("532b39d5b0417dea89608d95")]})
+
+CONTACTOS HOSPITAL:
+db.contactos.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre" : "Marco","apellido" : "Sanchez","telefonos" : "04140633988","email" : "marcosanchezae@gmail.com","twitter" : "","listas_id" : [ObjectId("532b39bcb0417dea89608d94"),ObjectId("532b3ef5b0417dea89608d96"),ObjectId("532b4751b0417dea89608d9b")]})
+db.contactos.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre" : "Manuel","apellido" : "Garrido","telefonos" : "04126675328","email" : "mgarrido@gmail.com","twitter" : "","listas_id" : [ObjectId("532b39bcb0417dea89608d94"),ObjectId("532b3f26b0417dea89608d98"),ObjectId("532b4751b0417dea89608d9b")]})
+db.contactos.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre" : "Daniel","apellido" : "Rubio","telefonos" : "04146300286","email" : "rubio_daniel@gmail.com","twitter" : "","listas_id" : [ObjectId("532b39bcb0417dea89608d94"),ObjectId("532b3f26b0417dea89608d98"),ObjectId("532b4751b0417dea89608d9b")]})
+db.contactos.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre" : "Dervis","apellido" : "Arias","telefonos" : "04264527760","email" : "ariasdervis@gmail.com","twitter" : "","listas_id" : [ObjectId("532b39bcb0417dea89608d94"),ObjectId("532b3f11b0417dea89608d97"),ObjectId("532b4751b0417dea89608d9b")]})
+db.contactos.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre" : "Damian","apellido" : "Diaz","telefonos" : "04140681394","email" : "damiandiaz841@hotmail.com","twitter" : "","listas_id" : [ObjectId("532b39bcb0417dea89608d94"),ObjectId("532b3f11b0417dea89608d97"),ObjectId("532b4751b0417dea89608d9b")]})
+db.contactos.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre" : "Francia","apellido" : "Arrieta","telefonos" : "04267693850","email" : "farrietapaz@gmail.com","twitter" : "","listas_id" : [ObjectId("532b39bcb0417dea89608d94"),ObjectId("532b3ef5b0417dea89608d96"),ObjectId("532b4751b0417dea89608d9b")]})
+db.contactos.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre" : "Larry","apellido" : "Garcia","telefonos" : "04126753818","email" : "larrygarciatj@gmail.com","twitter" : "","listas_id" : [ObjectId("532b39bcb0417dea89608d94"),ObjectId("532b4751b0417dea89608d9b")]})
+db.contactos.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre" : "Edwin","apellido" : "Nuñez","telefonos" : "04162687083","email" : "edwinjnm1972@gmail.com","twitter" : "","listas_id" : [ObjectId("532b39bcb0417dea89608d94"),ObjectId("532b3ef5b0417dea89608d96"),ObjectId("532b4751b0417dea89608d9b")]})
+
+CONTACTOS:
+db.contactos.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre" : "Nairesther","apellido" : "Gomez","telefonos" : "04246514697","email" : "nairestherg@gmail.com","twitter" : ""})
+db.contactos.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre" : "Cecilia","apellido" : "Villa","telefonos" : "041406584488","email" : "renacer.cecilia@gmail.com","twitter" : ""})
+
+LISTAS:
+db.listas.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre_lista" : "Hospital Coromoto","descripcion" : "Lista para el Hospital Coromoto"})
+db.listas.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre_lista" : "Hospital Coromoto Sistemas","descripcion" : "Lista para el Departamento de Sistemas del Hospital Coromoto"})
+db.listas.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre_lista" : "Hospital Coromoto Soporte","descripcion" : "Lista para el Soporte del Hospital Coromoto"})
+db.listas.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre_lista" : "Hospital Coromoto Desarrollo","descripcion" : "Lista para Desarrollo de Aplicaciones del Hospital Coromoto"})
+db.listas.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre_lista" : "Hospital Coromoto Insfraestructura","descripcion" : "Lista para Infraestructura del Hospital Coromoto"})
+
+db.listas.insert({"usuario_id" : ObjectId("531881944c2a8f439d19c136"),"nombre_lista" : "Cooperativa Fuerza Roja","descripcion" : "Lista para la Cooperativa Fuerza Roja"})
+
+
+db.listas.find().pretty()
+{
+	"_id" : ObjectId("532b39bcb0417dea89608d94"),
+	"usuario_id" : ObjectId("531881944c2a8f439d19c136"),
+	"nombre_lista" : "Hospital Coromoto",
+	"descripcion" : "Lista para el Hospital Coromoto"
+}
+{
+	"_id" : ObjectId("532b39d5b0417dea89608d95"),
+	"usuario_id" : ObjectId("531881944c2a8f439d19c136"),
+	"nombre_lista" : "Cooperativa Fuerza Roja",
+	"descripcion" : "Lista para la Cooperativa Fuerza Roja"
+}
+{
+	"_id" : ObjectId("532b3ef5b0417dea89608d96"),
+	"usuario_id" : ObjectId("531881944c2a8f439d19c136"),
+	"nombre_lista" : "Hospital Coromoto Soporte",
+	"descripcion" : "Lista para el Personal de Soporte del Hospital Coromoto"
+}
+{
+	"_id" : ObjectId("532b3f11b0417dea89608d97"),
+	"usuario_id" : ObjectId("531881944c2a8f439d19c136"),
+	"nombre_lista" : "Hospital Coromoto Desarrollo",
+	"descripcion" : "Lista para el Personal de Desarrollo de Aplicaciones del Hospital Coromoto"
+}
+{
+	"_id" : ObjectId("532b3f26b0417dea89608d98"),
+	"usuario_id" : ObjectId("531881944c2a8f439d19c136"),
+	"nombre_lista" : "Hospital Coromoto Insfraestructura",
+	"descripcion" : "Lista para el Personal de Infraestructura del Hospital Coromoto"
+}
+{
+	"_id" : ObjectId("532b4751b0417dea89608d9b"),
+	"usuario_id" : ObjectId("531881944c2a8f439d19c136"),
+	"nombre_lista" : "Hospital Coromoto Sistemas",
+	"descripcion" : "Lista para el Departamento de Sistemas del Hospital Coromoto"
+}
+
+> db.contactos.find()
+{ "_id" : ObjectId("531a12c44fa32736bdfd0edf"), "usuarios_id" : ObjectId("5317788d17d1643f95682a5f"), "nombre" : "Gregory", "apellido" : "Aular", "telefonos" : "04125479706", "email" : "gaular@gmail.com", "twitter" : "", "listas_id" : [ ObjectId("531a10f1a9bd50b031892990") ] }
+{ "_id" : ObjectId("531a13794fa32736bdfd0ee0"), "usuarios_id" : ObjectId("5317788d17d1643f95682a5f"), "nombre" : "Marco", "apellido" : "Sanchez", "telefonos" : "04140633988", "email" : "marcosanchezae@gmail.com", "twitter" : "", "listas_id" : [ ObjectId("531a0fcda9bd50b03189298f") ] }
+{ "_id" : ObjectId("531a13ca4fa32736bdfd0ee1"), "usuarios_id" : ObjectId("5317788d17d1643f95682a5f"), "nombre" : "Nairesther", "apellido" : "Gomez", "telefonos" : "04246514697", "email" : "nairestherg@gmail.com", "twitter" : "" }
+{ "_id" : ObjectId("531a15744fa32736bdfd0ee2"), "usuarios_id" : ObjectId("5317788d17d1643f95682a5f"), "nombre" : "Cecilia", "apellido" : "Villa", "telefonos" : "04146584488", "email" : "renacer.cecilia@gmail.com", "twitter" : "" }

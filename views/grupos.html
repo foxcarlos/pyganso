@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crear Grupos Nuevo</title>
+</head>
+
+<body>
+<form action="/grupoNuevo" method="post" name="grupos">
+	ID:<br>
+	<input type="text" name="id" /><br/>
+	
+	Nombre del Grupo:<br/>
+	<input type="text" name="nombre" required="required"/><br/>
+
+	Descripcion:<br/>
+	<input type="text" name="descripcion" /><br/>
+		
+	<input type="submit" name="guardarGrupo" value='Guardar'/>
+	<input type="reset" name="deshacer" value="Limpiar" />
+	<a href="/smsenviar">Regresar</a>
+</form>
+</body>
+</html>

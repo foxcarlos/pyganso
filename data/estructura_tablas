@@ -1,0 +1,46 @@
+Tabla Usuarios:
+{
+	"_id" : ObjectId("530fe473d66a71f9fb494145"),
+	"usuario" : "foxcarlos",
+	"clave" : "carlosgarcia",
+	"nombre" : "Carlos",
+	"apellido" : "Garcia",
+	"email" : "foxcarlos@gmail.com"
+}
+
+
+Tabla Contactos:
+{
+	"_id" : ObjectId("530fe55ed66a71f9fb494146"),
+	"apellido" : "Aular",
+	"email" : "gaular@gmail.com",
+	"listas_id" : [
+		ObjectId("53102cd20765e04fbd914500"),
+		ObjectId("53102c070765e04fbd9144ff")
+	],
+	"nombre" : "Gregory",
+	"telefonos" : "04125479706",
+	"twitter" : "",
+	"usuarios_id" : ObjectId("530fe473d66a71f9fb494145")
+}
+
+
+Tabla Listas
+{
+	"_id" : ObjectId("53102c070765e04fbd9144ff"),
+	"usuario_id" : ObjectId("530fe473d66a71f9fb494145"),
+	"nombre_lista" : "Hospital Coromoto",
+	"descripcion" : "Lista para el Hospital Coromoto"
+}
+{
+	"_id" : ObjectId("53102cd20765e04fbd914500"),
+	"usuario_id" : ObjectId("530fe473d66a71f9fb494145"),
+	"nombre_lista" : "Sistemas Hospital Coromoto",
+	"descripcion" : "Lista de Empleados de Sistemas del Hospital Coromoto"
+}
+
+Tabla SMS Enviados:
+_id
+fecha
+listas[]
+telefonos

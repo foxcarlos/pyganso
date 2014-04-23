@@ -148,7 +148,8 @@ class MiFrame(wx.Frame):
             
             #Llama al paciente con Voz
             #comando_de_voz = "espeak -s140 -v 'es-la'+f2 '%s'" % (lcPacienteDecode)
-            #os.system(comando_de_voz)
+            comando_de_voz = "espeapeak -p 80 -s 120 -v mb-vz1 '%s'" % (lcPacienteDecode)
+            os.system(comando_de_voz)
             
 	    ultimo = lcPacienteDecode + '-' + lcEspecialidad
             

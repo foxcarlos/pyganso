@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/style2.css">
+<link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:400,500,600,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Capriola' rel='stylesheet' type='text/css'>
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/contador.js" ></script>
+
+<script type="text/javascript">
+	function seleccionarContactos() {
+	/* Metodo que permite tomar de los comboBox contactos y grupos 
+	los elementos seleccionados y asignarselos a los textbox 
+	Contactos y Grupo*/
+		
+		var contacSelecionado;
+		var contacElegidos = '';
+		var contac = document.getElementById('elegir-contactos');
+
+		var grupoSelecionado;
+		var grupoElegidos = '';
+		var grup = document.getElementById('elegir-listas');
+	
+		for (var f=0;f<contac.length;f++){
+			if(contac.options[f].selected){
+				contacSelecionado = contac.options[f].text;
+				contacElegidos+=contacSelecionado+",";
+			}		
+		}
+		
+		for (var f=0;f<grup.length;f++){
+			if(grup.options[f].selected){
+				grupoSelecionado = grup.options[f].text;
+				grupoElegidos+=grupoSelecionado+",";
+			}		
+		}
+		
+		var contacEleg = contacElegidos.split(',');
+		contacEleg.pop();
+		document.getElementById('contactos').value = contacEleg;
+
+		var grupoEleg = grupoElegidos.split(',');
+		grupoEleg.pop();
+		document.getElementById('listas').value = grupoEleg;		
+	} 
+</script>
+
+<title>PyLoroWeb SMS</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+		<div class="col-md-6 col-md-offset-3">
+        <div class="row">
+        <div class="col-xs-6" ></div>
+        </div>
+    		<div class="panel panel-personal">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title">Envio de SMS  <span class="Three-Dee pull-right" >PyLoroWeb</span></h3>
+			 	</div>
+			  	<div class="panel-body">		    	                    
+                    <fieldset>
+                    	  <!-- <form action="/seleccionar" method="post"> --> 	
+                       <form name="contactosgrupos">
+                        <div class="row">
+                            <div class="col-sm-6">
+										<a href="/contactoNuevo">Contactos</a>                            	
+                                <div class="form-group">
+                                <select name="elegir-contactos" id="elegir-contactos" multiple class="form-control">
+                                      %for fila in comboBoxContactos:
+                                        <option>{{fila}}</option>
+                                      %end
+                                    </select>
+                                 </div>                        
+			    					 </div>
+                            <div class="col-sm-6">
+                            	<a href="/grupoNuevo">Grupos</a>
+                                <div class="form-group">
+                                <select name="elegir-listas" id="elegir-listas" multiple class="form-control">
+                                	%for fila in comboBoxListas:
+                                      <option>{{fila}}</option> 
+                                 %end
+                                    </select>
+                                 </div>
+                            </div>
+                            <div class="col-xs-12 margin-abajo">
+                            <input class="btn btn-personal" type="button" value="Seleccionar" onclick="seleccionarContactos()">
+                            <input class="btn btn-personal" type="reset" value="Limpiar">
+                            </div>
+                        </div>
+                        </form>
+                        
+                        <form action="/smsenviar" method="post">
+                        	<div class="input-group form-group">
+                        	<span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+			    		    		<input class="form-control" placeholder="Contactos Seleccionados" name="contactos" id="contactos" readonly type="text" value="{{get('text1', '')}}">
+			    					</div>
+			    	  				<div class="input-group form-group">
+			    	  				<!-- icon-group
+			    	  				glyphicon-list -->
+                        	<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+			    		    		<input class="form-control" placeholder="Grupos Seleccionados" name="listas" id="listas" readonly type="text" value="{{get('text2', '')}}" >
+			    					</div>
+			    	  				<div class="input-group form-group">
+                        	<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+			    		    		<input class="form-control" placeholder="Otros numeros Ej: 04263002844" name="numeros" type="text" value="{{get('text3', '')}}" >
+			    					</div>                        
+			    					<div class="form-group">
+                        	<textarea class="form-control counted" name="mensaje" required="required" placeholder="Mensaje a Enviar" rows="5" maxlength="140" ></textarea>
+                        	<h5 class="pull-right" id="counter">140 caracteres restantes</h5>
+			    					</div>
+                        
+			    					<div class="row boton">
+                        
+                        	<div class="col-xs-12 ">
+                        	<input class="btn btn-personal" type="submit" value="Enviar"> 
+                        	</div>
+                        </form>
+                        </div>
+			    	</fieldset>
+			      
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

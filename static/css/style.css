@@ -1,0 +1,85 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	background:#FCFCFC;
+	margin-top:30px;
+	font-family: 'Cabin Condensed', sans-serif;
+}
+h1{
+	font-size:3.2em;
+	
+}
+.panel-personal {
+	border: 1px #F57D20 solid;
+	font-family: 'Cabin Condensed', sans-serif;
+	font-size:1.2em;
+	letter-spacing:0.5px;
+}
+.panel-personal .panel-heading{
+background:#F57D20;color:#FFF;
+}
+.panel-personal .panel-title{
+	font-size:1.5em;
+}
+.panel-personal .boton{
+ margin-top:15px;
+}
+.panel-personal .align-vertical{
+ padding-top:6px;
+}
+
+.panel-personal .btn-personal{
+background:#F57D20;
+color:#FFF;
+font-weight:bold;
+font-size:1.1em;
+letter-spacing:1px;	
+}
+
+.panel-personal a{
+ color:#F57D20;
+ font-weight:bold;
+}
+input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {   
+border-color: #F57D20;
+box-shadow: none;
+outline: 0 none;
+opacity:0.8;
+
+}
+
+.select:focus{
+	border-color: #F57D20;
+	box-shadow: none;
+	outline: 0 none;
+	opacity:0.8;
+}
+
+.select option:focus{
+    background:#F57D20;
+	opacity:0.8;
+}
+
+textarea {
+  resize: none;
+}
+
+.textarea_focus:focus{
+	border-color: #F57D20;
+	box-shadow: none;
+	outline: 0 none;
+	opacity:0.8;
+}
+
+.Three-Dee{
+line-height: 1em;
+color: #424142;
+font-weight:bold;
+font-family: 'Capriola', sans-serif;
+}
+.central a{
+	margin:o auto;
+}
+.alert {
+	font-weight:bold;
+}

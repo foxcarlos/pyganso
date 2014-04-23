@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+<table id="tabla">
+<th scope="col" headers="Nombre" bgcolor="#BFBFBF">Nombre</th>
+<th scope="col" headers="Nombre" bgcolor="#BFBFBF">Apellido</th>
+<th scope="col" headers="Nombre" bgcolor="#BFBFBF">Segundo Apellido</th>
+
+%for fila in grid:
+	<tr bgcolor="#ADD8E6">
+	%for col in fila:
+		<td ><a href="grupos.html" name="link" id="link">{{col}}</a></td>
+	%end
+	</tr>
+%end
+</table>
+</body>
+</html>

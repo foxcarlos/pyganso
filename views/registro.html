@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+
+<div style="text-align: center">
+<p>Registrar Cuenta Nueva</p>
+</div>
+
+<form action="registro" method="post" id="registro">
+
+ID:
+<input type="text" name="id" id="id" /><br/>
+
+Nombre de Usuario:
+<input type="text" name="usuario" id="usuario" required="required" />
+<br/>
+
+Contraseña:
+<input type="password" name="clave" id="clave" required="required"/><br/>
+
+Confirmar Contraseña:
+<input type="password" name="clave2" id="clave2" required="required"/><br/>
+
+Descripcion:
+<input type="text" name="descripcion" id="descripcion" required="required"/>
+<br/>
+
+Ced/Rif:
+<input type="text" name="cedrif" id="cedrif" required="required"/><br/>
+
+<!-- Fecha:
+<input type="text" name="fecha" id="fecha"/><br/> -->
+
+Direccion:
+<input type="text" name="direccion" id="direccion"/><br/>
+
+Telefono:
+<input type="text" name="telefono" id="telefono" required="required"/><br/>
+
+Email:
+<input type="email" name="email" id="email"/><br/>
+
+Plan:
+<input type="text" name="plan" id="plan" value="{{get('planp', '')}}" />
+<input type="button" name="btnListarGrupos" value="Planes" onclick="listarGrupos()"/>
+<br/>
+
+Estructura Organizativa:
+<input type="text" name="estructura" id="estructura" readonly value="{{get('estructuraOrganizativa', '')}}" /><br/>
+
+Activo:
+<input type="checkbox" name="activo" {{usuarioActivo}} id="activo" />
+
+<br/>
+<input type="submit" name="Guardar" value="Guardar" id="btnGuardar"/>
+<input type="reset" name="Cancelar" value ="Cancelar" id="btnGuardar"/>
+<a href="/smsenviar" class="align-vertical btn btn-personal">Regresar</a>
+
+</form>
+</body>
+</html>
